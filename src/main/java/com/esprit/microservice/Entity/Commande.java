@@ -13,7 +13,7 @@ public class Commande  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCommande;
 	private String Date_cmd ; 
-	private String Etat_cmd ; 
+	private EtatCommande etat; 
 	private String Date_livraison ; 
 	private String Adresse_Livraison ; 
 	private String Destinataire ; 
@@ -30,12 +30,7 @@ public class Commande  implements Serializable {
 	public void setDate_cmd(String date_cmd) {
 		Date_cmd = date_cmd;
 	}
-	public String getEtat_cmd() {
-		return Etat_cmd;
-	}
-	public void setEtat_cmd(String etat_cmd) {
-		Etat_cmd = etat_cmd;
-	}
+	
 	public String getDate_livraison() {
 		return Date_livraison;
 	}
@@ -60,16 +55,12 @@ public class Commande  implements Serializable {
 	public void setFrais(int frais) {
 		Frais = frais;
 	}
-	public Commande(int idCommande, String date_cmd, String etat_cmd, String date_livraison, String adresse_Livraison,
-			String destinataire, int frais) {
-		super();
-		this.idCommande = idCommande;
-		Date_cmd = date_cmd;
-		Etat_cmd = etat_cmd;
-		Date_livraison = date_livraison;
-		Adresse_Livraison = adresse_Livraison;
-		Destinataire = destinataire;
-		Frais = frais;
+
+	public EtatCommande getEtat() {
+		return etat;
+	}
+	public void setEtat(EtatCommande etat) {
+		this.etat = etat;
 	}
 	public Commande() {
 		super();
@@ -77,7 +68,19 @@ public class Commande  implements Serializable {
 	public Commande(String destinataire) {
 		super();
 		Destinataire = destinataire;
+	}
+	public Commande(int idCommande, String date_cmd, EtatCommande etat, String date_livraison, String adresse_Livraison,
+			String destinataire, int frais) {
+		super();
+		this.idCommande = idCommande;
+		Date_cmd = date_cmd;
+		this.etat = etat;
+		Date_livraison = date_livraison;
+		Adresse_Livraison = adresse_Livraison;
+		Destinataire = destinataire;
+		Frais = frais;
 	} 
+	
 	
     
    
